@@ -22,10 +22,10 @@
 
 <style>
     .image-comparison{
-        max-width: 700px;
-        max-height: 400px;
-        margin: 0 auto;
-        border-radius: 2rem;
+        max-width: 650px;
+        max-height: 425px;
+        margin: 1rem auto 1rem;
+        border-radius: 1rem;
         overflow: hidden;
     }
     .image-comparison img{
