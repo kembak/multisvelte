@@ -1,5 +1,5 @@
 
-<div class="centerdiv">
+<div class="centerdivheading">
     <div class="heading">
         <h1>MULTIMEDIA 101</h1>
     </div>
@@ -18,16 +18,29 @@
 
 <style>
 :global(body){
-    font-family: "Libre Baskerville";
+    font-family: 'Libre Baskerville', Georgia, 'Times New Roman', Times, serif;
     background-color: #141824;
     color: white;
     margin: 0;
 }
-.centerdiv{
+.centerdivheading{
     max-width: fit-content;
     margin-top: 12vh;
     margin-inline: auto;
     /*border: 1px dotted green;*/
+}
+:global(.maindiv .centerdiv){
+    margin: 1rem auto;
+    border: 2px solid white;
+}
+:global(.maindiv .flexeven){
+    display: flex;
+    justify-content: space-evenly;
+}
+:global(.maindiv .columnar){
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .maindiv{
     max-width: 800px;
@@ -35,14 +48,14 @@
     margin-inline: auto;
     /*border: 1px dotted red;*/
 }
-.centerdiv h1{
+.centerdivheading h1{
     display: inline;
     font-size: 4rem;
     font-weight: 400;
     word-wrap: break-word;
 }
 .heading{
-    font-family: garamond;
+    font-family: Garamond, Georgia, "Times New Roman", times,  serif;
     text-align: center;
     /*background-color: slategray;*/
     padding: .5rem;
@@ -73,7 +86,7 @@
     text-align: center;
     color: #ffcc66;
     font-size: 1.75rem;
-    font-family: garamond;
+    font-family: Garamond, Georgia, 'Times New Roman', Times, serif;
 }
 :global(.maindiv p){
     font-size: 1.25rem;
@@ -83,19 +96,8 @@
     line-height: 1.25;
     text-decoration: none;
     color: #4085fc;
-    font-family: "Libre Baskerville";
 }
 :global(.maindiv a:hover){
     text-shadow: 0px 0px 4px rgba(255, 255, 255, .7);
-}
-footer{
-    background-color: #1d2021;
-    margin-top: 4rem;
-}
-.footercontent{
-    padding: 1rem;
-    text-align: center;
-    font-size: 1.25rem;
-    color: white;
 }
 </style>
