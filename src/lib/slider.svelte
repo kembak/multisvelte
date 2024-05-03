@@ -51,8 +51,8 @@
     .image-comparison .slider-line{
         position: absolute;
         height: 100%;
-        width: 4px;
-        background-color: white;
+        width: 3px;
+        background-color: black;
         left: var(--ny-bredde);
         transform: translateX(-50%);
     }
@@ -62,7 +62,7 @@
         top: 50%;
         width: 70px;
         height: 70px;
-        color: white;
+        color: black;
         transform: translate(-50%, -50%) rotateZ(90deg);
     }
 </style>

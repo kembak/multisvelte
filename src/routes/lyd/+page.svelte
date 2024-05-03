@@ -14,3 +14,8 @@
         <p>Iron Maiden 64Kbps</p>
     </div>
 </div>
+
+<div class="flexbetween">
+    <a class="navknapp" href="/">Hjem</a>
+    <a class="navknapp" href="/bilde">Bilde</a>
+</div>

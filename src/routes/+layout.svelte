@@ -64,7 +64,7 @@
     display: flex;
     justify-content: space-between;
     /*border: 1px dotted blue;*/
-    font-size: 22px;
+    font-size: 1.375rem;
     font-weight: 700;
     flex-wrap: wrap;
     font-family: garamond;
@@ -99,5 +99,20 @@
 }
 :global(.maindiv a:hover){
     text-shadow: 0px 0px 4px rgba(255, 255, 255, .7);
+}
+:global(.maindiv .navknapp){
+    text-decoration: none;
+    color: #da70d6;
+    font-size: 1.375rem;
+    font-weight: 700;
+    font-family: Garamond;
+    transition: 0.2s ease;
+}
+:global(.maindiv .navknapp:hover){
+    color: white;
+}
+:global(.maindiv .flexbetween){
+    display: flex;
+    justify-content: space-between;
 }
 </style>
