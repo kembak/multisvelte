@@ -1,0 +1,13 @@
+[
+    {
+      "question": "Hva er en megapixel",
+      "answers": ["1x10^6 piksler", "et 4k bilde", "100x100 piksler", "En gif"],
+      "correctAnswer": "1x10^6 piksler",
+      "type": "button"
+    },
+    {
+      "question": "Hvilket format gir komprimert lyd?",
+      "correctAnswer": "mp3",
+      "type": "text"
+    }
+  ]
