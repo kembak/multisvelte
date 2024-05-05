@@ -9,60 +9,115 @@
   }
 
   fetchQuizData();
+  //definerer variabler
+  let sporsmalIndex = 0;
+  let antallRiktige = 0;
+  let svar;
 
-  let currentQuestionIndex = 0;
-  let numCorrectAnswers = 0;
-  let answer;
-
-  function submitAnswer(answer) {
-    if (answer === quizData[currentQuestionIndex].correctAnswer) {
-      numCorrectAnswers++;
+  function avgiSvar(svar) {
+    if (svar === quizData[sporsmalIndex].riktigsvar) {
+      antallRiktige++;
+      // hvis svaret er likt som fasit øker antallet riktige svar
     }
-    currentQuestionIndex++;
+    nyttSvar()
+  }
+  function nyttSvar() {
+    //øker indexen til spørmsål og resetter svar variable til neste spørsmål
+    sporsmalIndex++;
+    svar = "";
   }
 
-  function finishQuiz() {
-    // Display number of correct answers and reset quiz
-    alert(`You got ${numCorrectAnswers} out of ${quizData.length} correct.`);
-    currentQuestionIndex = 0;
-    numCorrectAnswers = 0;
-    answer = "";
+  function avsluttQuiz() {
+    // viser antall riktige svar fra quizen som en melding
+    alert(`Du fikk ${antallRiktige} av ${quizData.length} riktige.`);
+    sporsmalIndex = 0;
+    antallRiktige = 0;
+    svar = "";
+    // resetter alle verdiene igjen når quizen avsluttes
   }
 </script>
 
 <br><br>
 
 {#if quizData}
-  {#if currentQuestionIndex < quizData.length}
-    <!-- Display current question -->
+  {#if sporsmalIndex < quizData.length}
     <div class="quizkont">
-      <h2>{quizData[currentQuestionIndex].question}</h2>
-      {#if quizData[currentQuestionIndex].type === "text"}
+      <!--Konteiner for quizen-->
+      <h2>{quizData[sporsmalIndex].sporsmal}</h2>
+      {#if quizData[sporsmalIndex].type === "text"}
+      <!--hvis json opjektet har type lik text vises html koden under-->
         <div class="inputsvar">
-        <input type="text" bind:value={answer} />
-        <button on:click={() => submitAnswer(answer)}>SVAR</button>
+        <input type="text" bind:value={svar} />
+        <!--binder input til svar-->
+        <button on:click={() => avgiSvar(svar)}>SVAR</button>
+        <!--svaret blir input til funksjonen som sjekker riktig svar-->
         </div>
-      {:else if quizData[currentQuestionIndex].type === "button"}
-        {#each quizData[currentQuestionIndex].answers as option}
+      {:else if quizData[sporsmalIndex].type === "button"}
+      <!--Hvis objekter er av type button vises html koden under-->
+        {#each quizData[sporsmalIndex].alternativer as alternativ}
+        <!--Viser hvert alternativ som en knapp-->
           <div class="columnar">
-            <button class="svaralternativ" on:click={() => submitAnswer(option)}
-              >{option}</button
+            <button class="svaralternativ" on:click={() => avgiSvar(alternativ)}
+              >{alternativ}</button
             >
           </div>
         {/each}
       {/if}
     </div>
   {:else}
-    <!-- Display finish quiz button -->
+  <!--hvis objektet har ingen type er quizen ferdig og html koden under vises-->
     <div class="quizkont">
     <div class="columnar">
-      <button class="svaralternativ" style="margin-top: 10rem; width: 30%" on:click={finishQuiz}>Avslutt Quiz</button>
+      <button class="svaralternativ" style="margin-top: 10rem; width: 30%" on:click={avsluttQuiz}>Avslutt Quiz</button>
     </div>
     </div>
   {/if}
 {/if}
 
+
+<h2 style="margin-top: 8rem;">Psuedokode for quizen</h2>
+<br><ol>
+  <li>Hent quiz-data fra JSON-fil</li><br>
+  <li>Definer variabler:</li>
+    <ul>
+      <li>quizData: Holder den hentede quiz-dataen</li>
+      <li>spørsmålIndex: Sporer indeksen til gjeldende spørsmål som vises</li>
+      <li>antallRiktige: Sporer antall riktige svar</li>
+    </ul><br>
+  <li>Funksjon fetchQuizData():</li>
+    <ul>
+      <li>Hent quiz-data fra github med fetch</li>
+      <li>Lagre JSON-responsen i variabelen quizData</li>
+    </ul><br>
+  <li>Lag to forskjellige typer spørsmål</li>
+    <ul>
+      <li>En med inputfelt og en med alternativer som knapper, hvert objekt i json filen har enten tekst eller knapp som type.</li>
+      <li>Lag en each løkke for å vise alle alternativer viss typer er knapp som trigger funksjonen avgiSvar.</li>
+      <li>Lag en knapp hvis typen er tekst som også trigger avgiSvar</li>
+    </ul><br>
+  <li>Funksjon avgiSvar(svar):</li>
+    <ul>
+      <li>Sjekk om det innsendte svaret er likt det riktige svaret for gjeldende spørsmål</li>
+      <li>Hvis det er riktig, øk antallRiktige</li>
+      <li>Gå videre til neste spørsmål ved å øke spørsmålIndex</li>
+    </ul><br>
+  <li>Funksjon avsluttQuiz():</li>
+    <ul>
+      <li>Vis en melding med antall riktige svar av totalt antall spørsmål</li>
+      <li>Tilbakestill variablene for å starte quizen på nytt</li>
+    </ul>
+</ol>
+
 <style>
+  ol{
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    color: #4085fc;
+  }
+  ul{
+    font-size: 1.125rem;
+    color: white;
+  }
   .quizkont {
     padding: 3rem;
     font-family: garamond;

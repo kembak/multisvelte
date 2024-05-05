@@ -1,4 +1,3 @@
-
 <div class="centerdivheading">
     <div class="heading">
         <h1>MULTIMEDIA 101</h1>
@@ -15,6 +14,14 @@
 <div class="maindiv">
 <slot />
 </div>
+
+<!--Jeg har valgt å definere globale stiler i denne filen.Layout
+slot ligger inne i en kontiener div og jeg bruker svelte sin nestede css syntax for å lage stiler som kan brukes inni denne konteineren-->
+
+<footer>
+    <p style="font-family:Arial, Helvetica, sans-serif; font-size:large; color:#575f75; text-align:center; margin:10rem auto 2rem auto;">
+        &#169; 2024 MULTIMEDIA 101 - <i>Alle Rettigheter Reservert</i></p>
+</footer>
 
 <style>
 :global(body){
@@ -42,10 +49,15 @@
     flex-direction: column;
     align-items: center;
 }
+:global(.maindiv .artikkelbilde){
+    width: 75%;
+    border-radius: 1rem;
+}
 .maindiv{
     max-width: 800px;
     padding: 1rem;
     margin-inline: auto;
+    min-height: 100vh;
     /*border: 1px dotted red;*/
 }
 .centerdivheading h1{
@@ -57,13 +69,11 @@
 .heading{
     font-family: Garamond, Georgia, "Times New Roman", times,  serif;
     text-align: center;
-    /*background-color: slategray;*/
     padding: .5rem;
 }
 .navbar{
     display: flex;
     justify-content: space-between;
-    /*border: 1px dotted blue;*/
     font-size: 1.375rem;
     font-weight: 700;
     flex-wrap: wrap;
@@ -88,11 +98,17 @@
     font-size: 1.75rem;
     font-family: Garamond, Georgia, 'Times New Roman', Times, serif;
 }
+:global(.maindiv h3){
+    color: #bae67e;
+    text-align: center;
+    font-family: Garamond, Georgia, 'Times New Roman', Times, serif;
+}
 :global(.maindiv p){
-    font-size: 1.25rem;
+    font-size: 1.125rem;
+    line-height: 1.5;
 }
 :global(.maindiv a){
-    font-size: 1.25rem;
+    font-size: 1.125rem;
     line-height: 1.25;
     text-decoration: none;
     color: #4085fc;
@@ -102,8 +118,10 @@
 }
 :global(.maindiv .navknapp){
     text-decoration: none;
+    padding: 0rem;
+    margin: 2rem 0 3rem 0;
     color: #da70d6;
-    font-size: 1.375rem;
+    font-size: 1.5rem;
     font-weight: 700;
     font-family: Garamond;
     transition: 0.2s ease;

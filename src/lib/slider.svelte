@@ -6,8 +6,8 @@
 
 <div class="image-comparison">
     <div class="images-container">
-        <img class="before-image" src={before} alt="" style="--ny-bredde: {bredde + "%"}">
-        <img class="after-image" src={after} alt="">
+        <img class="before-image" src={before} alt="Frisk bris av Hans Gude" style="--ny-bredde: {bredde + "%"}">
+        <img class="after-image" src={after} alt="Frisk bris av Hans Gude">
 
         <div class="slider-line" style="--ny-bredde: {bredde + "%"}"></div>
         <div class="slider-icon" style="--ny-bredde: {bredde + "%"}">
@@ -17,8 +17,14 @@
               
         </div>
         <input type="range" bind:value={bredde} class="slider" min="0" max="100">
+        <!--Det ligger en usynlig input type range over bildet som er bindet til den reaktive variablen
+        "slideren" som har opasitet er kun en strek i form av en div og et ikon som begge har en css variabel for posisjon som er lik den reaktive variablen til input range elementet-->
     </div>
 </div>
+
+<!--Istedenfor å bruke javascript til å lage denne slidere slapp jeg unna med kun én svelte
+reaktiv variabel kombinert med styling og css-varaibler.
+Dette er et sveltekomponent som kan importeres og vises hvor som helst i routes på samme måte som slot fungerer for layout-->
 
 <style>
     .image-comparison{
